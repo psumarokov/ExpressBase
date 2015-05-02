@@ -10,6 +10,16 @@ var routes = require('./routes/index');
 var cars = require('./routes/cars');
 var car = require('./routes/car');
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/cars', function(err) {
+    if(err) {
+        console.log('Failed to connect to cars database: ', err);
+    } else {
+        console.log('Connected to cars database');
+    }
+});
+
 var app = express();
 
 // view engine setup
