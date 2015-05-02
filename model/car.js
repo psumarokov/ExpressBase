@@ -8,14 +8,13 @@ var CarSchema = mongoose.Schema({
     image: String
 });
 
-CarSchema.methods.cleanAndRemove = function(imagesPath) {
-    var car = this;
-    var imageName = imagesPath + car.image;
+CarSchema.statics.cleanAndRemoveById = function(carId, imagesPath) {
     var deferred = q.defer();
 
-    fs.unlink(imageName, function(err) {
+    this.model('Car').findOneAndRemove({'_id' : carId}, function(err, car){
         if (err) return deferred.reject(err);
-        car.remove(function(err) {
+        var imageName = imagesPath + car.image;
+        fs.unlink(imageName, function(err) {
             if (err) return deferred.reject(err);
             deferred.resolve();
         });

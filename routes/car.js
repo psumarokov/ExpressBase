@@ -21,18 +21,14 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     // TODO: handle delete in separate route
     if (req.body.method == 'delete') {
-        Car.findById(req.body.id, function(err, car) {
-            if (err) return next(err);
-            var imagesPath = '.' + req.app.locals.public + req.app.locals.images;
-            car.cleanAndRemove(imagesPath).then(function() {
-                console.log('Deleted car with id ' + req.body.id);
-                res.redirect('/cars')
-            }, function(err) {
-                next(err);
-            });
+        var imagesPath = '.' + req.app.locals.public + req.app.locals.images;
+        Car.cleanAndRemoveById(req.body.id, imagesPath).then(function() {
+            console.log('Deleted car with id ' + req.body.id);
+            res.redirect('/cars')
+        }, function(err) {
+            next(err);
         });
-    }
-    else {
+    } else {
         var car = new Car({
             brand: req.body.brand,
             model: req.body.model,
