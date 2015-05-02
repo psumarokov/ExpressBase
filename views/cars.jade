@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1= title
+    div
+        form(action='/car/', method='post')
+            div
+                label Brand:&nbsp;
+                    input(name='brand', type='text')
+            div
+                label Model:&nbsp;
+                    input(name='model', type='text')
+            div
+                input(type='submit', value='Submit')
+    div: ul#cars
+        li: a(href='/car/?id=1') Ferrari F50 Maranello
+        li: a(href='/car/?id=2') Porsche 911
