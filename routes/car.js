@@ -17,7 +17,6 @@ router.get('/', function(req, res, next) {
 });
 
 // POST new car
-// TODO: resolve christmas tree problem
 router.post('/', function(req, res, next) {
     // TODO: handle delete in separate route
     if (req.body.method == 'delete') {
