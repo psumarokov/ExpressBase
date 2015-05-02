@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var CarSchema = mongoose.Schema({
     brand: String,
-    model: String
+    model: String,
+    image: String
 });
 
 CarSchema.methods.fullName = function() {

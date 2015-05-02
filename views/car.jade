@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+    div: img(src='#{image}', alt='#{title}', height=200, width=300)
+    div
+        // TODO: fix workaround by switching to AJAX framework
+        form(action='/car/', method='post')
+            input(type='hidden', name='id', value='#{carId}')
+            input(type='hidden', name='method', value='delete')
+            input(type='submit', value='Delete')
+    div: a(href='/cars/') Back to the list

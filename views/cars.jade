@@ -3,13 +3,16 @@ extends layout
 block content
     h1= title
     div
-        form(action='/car/', method='post')
+        form(action='/car/', method='post', enctype='multipart/form-data')
             div
                 label Brand:&nbsp;
                     input(name='brand', type='text')
             div
                 label Model:&nbsp;
                     input(name='model', type='text')
+            div
+                label Image:&nbsp;
+                    input(type="file", name="image")
             div
                 input(type='submit', value='Submit')
     div: ul
