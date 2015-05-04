@@ -3,5 +3,8 @@ extends layout
 block content
     h1= title
     p Welcome to #{title}
-    p Browse&nbsp;
-        a(href="/cars/") cars
+    p
+        div /cars/ - list all cars
+        div /cars/id - get car by id
+        div /cars/ POST new car: {brand, model, image}
+        div /cars/id DELETE car with given id

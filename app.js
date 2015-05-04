@@ -8,7 +8,6 @@ var multer = require('multer');
 
 var routes = require('./routes/index');
 var cars = require('./routes/cars');
-var car = require('./routes/car');
 
 var mongoose = require('mongoose');
 
@@ -54,7 +53,6 @@ app.use(express.static(path.join(__dirname, app.locals.public)));
 
 app.use('/', routes);
 app.use('/cars', cars);
-app.use('/car', car);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

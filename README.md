@@ -17,7 +17,7 @@ Running from CLI
 Features
 --------
 - Express routing
-- HTTP CRUD
+- REST API with CRUD operations
 - File upload
 - Integration with MongoDB via Mongoose
 - Promises
@@ -30,6 +30,7 @@ Backlog
 - Support pagination
 - Add proper logging
 - Find and follow code style guidelines
+- Send error codes in response
 
 Links
 --------
