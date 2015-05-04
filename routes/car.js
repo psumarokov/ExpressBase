@@ -3,19 +3,6 @@ var router = express.Router();
 
 var Car = require('../model/car.js');
 
-// GET  a car by id
-router.get('/', function(req, res, next) {
-    Car.findById(req.query.id, function(err, car) {
-        if (err) return next(err);
-        var carImage = req.app.locals.images + car.image;
-        res.render('car', {
-            title: car.fullName(),
-            image: carImage,
-            carId: req.query.id
-        });
-    });
-});
-
 // POST new car
 router.post('/', function(req, res, next) {
     // TODO: handle delete in separate route

@@ -26,9 +26,24 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, Content-Length, X-Requested-With');
+
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+        res.sendStatus(200);
+    }
+    else {
+        next();
+    }
+};
+
 app.locals.public = '/public';
 app.locals.images = '/images/';
 
+app.use(allowCrossDomain);
 app.use(favicon(__dirname + app.locals.public + '/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
