@@ -24,13 +24,13 @@ Features
 
 Backlog
 --------
-- Implement Delete method using AJAX
 - Introduce form and model validation
 - Write automated tests using Mocha
 - Support pagination
 - Add proper logging
 - Find and follow code style guidelines
-- Send error codes in response
+- Handle errors and respond with codes respectively
+- Validate requests
 
 Links
 --------

@@ -7,6 +7,9 @@ var Car = require('../model/car.js');
 router.get('/', function(req, res, next) {
     Car.find(function(err, cars) {
         if (err) return next(err);
+        cars.forEach(function(car) {
+            car.image = req.app.locals.images + car.image;
+        });
         res.json({cars: cars});
     });
 });
