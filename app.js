@@ -7,10 +7,9 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 
 var initDB = require('./services/db-initializer.js');
-initDB();
+var allRoutes = require('./services/routes-initializer.js');
 
-var routes = require('./routes/index');
-var cars = require('./routes/cars');
+initDB();
 
 var app = express();
 
@@ -44,8 +43,10 @@ app.use(multer({ dest: __dirname + app.locals.public + app.locals.images}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, app.locals.public)));
 
-app.use('/', routes);
-app.use('/cars', cars);
+var routes = allRoutes();
+routes.map(function(routing) {
+    app.use(routing.path, routing.router);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
