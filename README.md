@@ -16,7 +16,7 @@ Running from CLI
 
 Features
 --------
-- Express routing with routers automatically loaded from ./routes/*
+- Express routers automatically loaded from ./routes/*
 - REST API with CRUD operations
 - File upload
 - Integration with MongoDB via Mongoose
